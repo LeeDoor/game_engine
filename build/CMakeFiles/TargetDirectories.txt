@@ -1,3 +1,0 @@
-/home/leedoor/Projects/time-shifter/build/CMakeFiles/platformer.dir
-/home/leedoor/Projects/time-shifter/build/CMakeFiles/edit_cache.dir
-/home/leedoor/Projects/time-shifter/build/CMakeFiles/rebuild_cache.dir

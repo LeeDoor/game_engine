@@ -1,1 +1,0 @@
-/usr/bin/c++ -rdynamic CMakeFiles/platformer.dir/main.cpp.o -o platformer  /usr/lib/libSDL2main.a /usr/lib/libSDL2-2.0.so.0.2600.4 
