@@ -1,4 +1,5 @@
 #include "window.hpp"
+#include <ctime>
 
 Window::Window() {
     if(!init("time shifter", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCR_W, SCR_H, 0))
@@ -31,12 +32,15 @@ bool Window::load() {
 }
 
 bool Window::update() {
+    srand(time(0));
     gameRunning = true;
     SDL_Event e;
-
+    Uint64 prevFrame = SDL_GetTicks64();
+    Uint64 nextFrame;
     while (gameRunning)
     {
-        SDL_WaitEvent(&e);
+
+        SDL_PollEvent(&e);
  
         switch (e.type)
         {
@@ -45,7 +49,14 @@ bool Window::update() {
             break;
         }
 
-        SDL_Rect dstrect = { 5, 5, 50, 50 };
+        nextFrame = SDL_GetTicks64();
+        if(nextFrame - prevFrame < FRAME_TIME) {
+            continue;
+        }
+        prevFrame = nextFrame;
+
+        SDL_RenderClear(ren);
+        SDL_Rect dstrect = { rand() % 1000, rand() % 1000, 50, 50 };
         SDL_RenderCopy(ren, char_text, NULL, &dstrect);
         SDL_RenderPresent(ren);
     }

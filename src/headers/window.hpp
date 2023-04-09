@@ -19,6 +19,9 @@ private:
     const int SCR_W = 1000; // window width
     const int SCR_H = 1000; // window height
 
+    const int MAX_FPS = 20; // max fps
+    const double FRAME_TIME = 1000/(double)MAX_FPS; // time between frame changings
+
     bool gameRunning = false; // is game running variable
 
     SDL_Window* win = nullptr; // main window
