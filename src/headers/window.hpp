@@ -1,5 +1,7 @@
 #pragma once
 #include <SDL.h>
+#include <vector>
+#include "drawable.hpp"
 
 class Window {
 public:
@@ -16,6 +18,8 @@ private:
     bool quit();
 
 
+    std::vector<Drawable*> toDraw;
+
     const int SCR_W = 1000; // window width
     const int SCR_H = 1000; // window height
 
@@ -26,7 +30,4 @@ private:
 
     SDL_Window* win = nullptr; // main window
     SDL_Renderer* ren = nullptr; // window renderer
-
-    SDL_Surface* char_sur = nullptr; // main character surface
-    SDL_Texture* char_text = nullptr; // main character texture
 };

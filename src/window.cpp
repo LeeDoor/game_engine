@@ -1,5 +1,6 @@
 #include "window.hpp"
 #include <ctime>
+#include "hero.hpp"
 
 Window::Window() {
     if(!init("time shifter", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCR_W, SCR_H, 0))
@@ -22,11 +23,9 @@ bool Window::init(const char *title, int x, int y, int w, int h, Uint32 flags) {
 }
 
 bool Window::load() {
-    char_sur  = SDL_LoadBMP("res/smile.bmp");
-    if(char_sur == nullptr) return false;
-
-    char_text = SDL_CreateTextureFromSurface(ren, char_sur);
-    if(char_text == nullptr) return false;
+    Drawable* hero = new Hero();
+    hero->init(ren, "res/smile.bmp");
+    toDraw.push_back(hero);
 
     return true;
 }
@@ -60,15 +59,14 @@ bool Window::update() {
 
         ///screen render///
         SDL_RenderClear(ren);
-        SDL_Rect dstrect = { rand() % 1000, rand() % 1000, 50, 50 };
-        SDL_RenderCopy(ren, char_text, NULL, &dstrect);
+        for(Drawable* cur : toDraw){
+            cur->draw(ren);
+        }
         SDL_RenderPresent(ren);
     }
     return true;
 }
 bool Window::quit() {
-    SDL_DestroyTexture(char_text);
-    SDL_FreeSurface(char_sur);
     SDL_DestroyRenderer(ren);
     SDL_DestroyWindow(win);
     return true;
