@@ -33,15 +33,17 @@ bool Window::load() {
 
 bool Window::update() {
     srand(time(0));
-    gameRunning = true;
-    SDL_Event e;
-    Uint64 prevFrame = SDL_GetTicks64();
-    Uint64 nextFrame;
-    while (gameRunning)
-    {
+    gameRunning = true; // true if game loop is going
+    SDL_Event e; // event handler
 
+    // variables to count time between ticks
+    Uint64 prevFrame = SDL_GetTicks64(); 
+    Uint64 nextFrame;
+
+    while (gameRunning) // main loop
+    {
+        ///event handle///
         SDL_PollEvent(&e);
- 
         switch (e.type)
         {
         case SDL_QUIT:
@@ -49,12 +51,14 @@ bool Window::update() {
             break;
         }
 
+        ///fps lock///
         nextFrame = SDL_GetTicks64();
         if(nextFrame - prevFrame < FRAME_TIME) {
             continue;
         }
         prevFrame = nextFrame;
 
+        ///screen render///
         SDL_RenderClear(ren);
         SDL_Rect dstrect = { rand() % 1000, rand() % 1000, 50, 50 };
         SDL_RenderCopy(ren, char_text, NULL, &dstrect);
