@@ -1,5 +1,4 @@
 #include "window.hpp"
-#include <iostream>
 
 Window::Window() {
     if(!init("time shifter", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCR_W, SCR_H, 0))
@@ -15,7 +14,7 @@ Window::~Window(){
 bool Window::init(const char *title, int x, int y, int w, int h, Uint32 flags) {
     win = SDL_CreateWindow(title, x, y, w, h, flags);
     if(win == nullptr) return false;
-    
+
     ren = SDL_CreateRenderer(win, -1, 0);
     if(ren == nullptr) return false;
     return true;
@@ -37,7 +36,6 @@ bool Window::update() {
 
     while (gameRunning)
     {
-        std::cout << "loop" << std::endl;
         SDL_WaitEvent(&e);
  
         switch (e.type)
