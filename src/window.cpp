@@ -15,6 +15,7 @@ Window::~Window(){
 bool Window::init(const char *title, int x, int y, int w, int h, Uint32 flags) {
     win = SDL_CreateWindow(title, x, y, w, h, flags);
     if(win == nullptr) return false;
+    
     ren = SDL_CreateRenderer(win, -1, 0);
     if(ren == nullptr) return false;
     return true;
