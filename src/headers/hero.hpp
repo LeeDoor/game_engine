@@ -8,7 +8,7 @@ public:
     
     void draw(SDL_Renderer* ren) override;
 private:
-    const int width = 40, height = 40;
-    int xpos, ypos;
+    const int w = 400, h = 400;
+    int x, y;
 
 };

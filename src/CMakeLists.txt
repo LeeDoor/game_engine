@@ -8,6 +8,14 @@ target_sources(srcl PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/headers/window.hpp)
 
 target_include_directories(srcl PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/headers)
+
 find_package(SDL2 REQUIRED)
-include_directories(${SDL2_INCLUDE_DIRS})
-target_link_libraries(srcl ${SDL2_LIBRARIES})
+find_package(SDL2_image REQUIRED)
+
+message ("${SDL2_image_INCLUDE_DIR}")
+message ("${SDL2_image_LIBRARIES}")
+
+include_directories(${SDL2_INCLUDE_DIRS} ${SDL2_IMAGE_INCLUDE_DIR})
+
+target_link_libraries(srcl PRIVATE SDL2::SDL2main SDL2::SDL2 SDL2_image::SDL2_image)
+#target_link_libraries(srcl ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARY})

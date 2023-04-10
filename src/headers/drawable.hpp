@@ -1,5 +1,6 @@
 #pragma once
 #include <SDL.h>
+#include <SDL_image.h>
 
 //abstract class for each object which can be drawn
 class Drawable {
@@ -10,12 +11,9 @@ protected:
 public:
     bool init(SDL_Renderer* ren, const char* pathToImage_) { // creates texture according to image path
         pathToImage = pathToImage_;
-        SDL_Surface* sur = SDL_LoadBMP(pathToImage);
-        if(sur == NULL) return false;
-
-        text = SDL_CreateTextureFromSurface(ren, sur);
+        
+        text = IMG_LoadTexture(ren, pathToImage_);
         if(text == NULL) return false;
-        SDL_FreeSurface(sur);
         return true;
     } 
     virtual void draw(SDL_Renderer* ren) = 0; // drawing function. should be overrided for each object

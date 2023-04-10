@@ -24,7 +24,7 @@ bool Window::init(const char *title, int x, int y, int w, int h, Uint32 flags) {
 
 bool Window::load() {
     Drawable* hero = new Hero();
-    hero->init(ren, "res/smile.bmp");
+    if(!hero->init(ren, "res/smile.bmp")) return false;
     toDraw.push_back(hero);
 
     return true;
@@ -59,7 +59,7 @@ bool Window::update() {
 
         ///screen render///
         SDL_RenderClear(ren);
-        for(Drawable* cur : toDraw){
+        for(Drawable* cur : toDraw){ // cycle to draw each drawable element in vector
             cur->draw(ren);
         }
         SDL_RenderPresent(ren);
