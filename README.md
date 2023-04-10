@@ -12,7 +12,7 @@ make
 to launch tests, enter following command
 
 ```
-ctests --verbose
+ctest --verbose
 ```
 
 to launch app write
