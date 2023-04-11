@@ -9,21 +9,18 @@ sudo pacman -S sdl2
 
 to build project by your own:
 ```
-mkdir build
-cd build
-cmake ..
-make
+cmake -S. -Bbuild
+cmake --build build
 ```
 
 to launch tests, enter following command
 
 ```
-ctest --verbose
+ctest --verbose --test-dir build  
 ```
 
 to launch app write
 
 ```
-cd ..
 ./build/platformer
 ```
