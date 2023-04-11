@@ -10,6 +10,6 @@ protected:
 
 public:
     // creates texture according to image path
-    bool init(SDL_Renderer* ren, const char* pathToImage_, Vector2fPtr pos_);
+    bool init(SDL_Renderer* ren, const char* pathToImage_, Vector2iPtr pos_);
     virtual void draw(SDL_Renderer* ren) = 0; // drawing function. should be overrided for each object
 };

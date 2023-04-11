@@ -1,6 +1,6 @@
 #pragma once 
 #include <SDL.h>
-#include "vector2f.hpp"
+#include "vector2.hpp"
 #include "game_object.hpp"
 #include <memory>
 #include <iostream>
@@ -34,7 +34,7 @@ public:
     static int isCollide(SDL_Rect& first, SDL_Rect& second);
 
     bool init();
-    bool init(Vector2fPtr pos_, RectPtr coll_, Vector2fPtr dir_, float force_);
+    bool init(Vector2iPtr pos_, RectPtr coll_, Vector2fPtr dir_, float force_);
     void update (int collision = 4);
     void print();
 };

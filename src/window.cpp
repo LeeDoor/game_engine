@@ -24,7 +24,8 @@ bool Window::init(const char *title, int x, int y, int w, int h, Uint32 flags) {
 
 bool Window::load() {
     Drawable* hero = new Hero();
-    if(!hero->init(ren, "res/smile.bmp", std::make_unique<Vector2f>(Vector2f{50, 50}))) return false;
+    Vector2iPtr pos = std::make_unique<Vector2i>(Vector2i{50, 50});
+    if(!hero->init(ren, "res/smile.bmp", std::move(pos))) return false;
     toDraw.push_back(hero);
 
     return true;

@@ -1,6 +1,6 @@
 #include "drawable.hpp"
 
-bool Drawable::init(SDL_Renderer* ren, const char* pathToImage_, Vector2fPtr pos_) {
+bool Drawable::init(SDL_Renderer* ren, const char* pathToImage_, Vector2iPtr pos_) {
     if(!GameObject::init(std::move(pos_)))return false;
     pathToImage = pathToImage_;
         

@@ -23,11 +23,11 @@ int Physic::isCollide(SDL_Rect& first, SDL_Rect& second){
     return 4;
 }
 bool Physic::init() {
-    return init(std::make_unique<Vector2f>(Vector2f{1, 2}),
+    return init(std::make_unique<Vector2i>(Vector2i{1, 2}),
         std::make_unique<SDL_Rect>(SDL_Rect{0, 0, 1, 1}), 
         std::make_unique<Vector2f>(Vector2f{1, 1}), 0);
 }
-bool Physic::init(Vector2fPtr pos_, RectPtr coll_, Vector2fPtr dir_, float force_) {
+bool Physic::init(Vector2iPtr pos_, RectPtr coll_, Vector2fPtr dir_, float force_) {
     GameObject::init(std::move(pos_));
     coll = std::move(coll_);
     setDir(std::move(dir_));
@@ -43,7 +43,8 @@ void Physic::update (int collision) {
     *dir += GRAVITY_DIR;
     dir->normalize();
 
-    *pos += *dir * force;
+    Vector2f posDif = *dir * force;
+    *pos += Vector2i {(int)posDif.x, (int)posDif.y};
 }
 void Physic::print(){
     std::cout << "collider: " << coll->x << ' ' << coll->y << ' ' << coll->w << " " << coll->h << "\n"
