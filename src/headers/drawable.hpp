@@ -9,13 +9,7 @@ protected:
     const char* pathToImage; // path to texture image
 
 public:
-    bool init(SDL_Renderer* ren, const char* pathToImage_, Vector2fPtr pos_) { // creates texture according to image path
-        GameObject::init(std::move(pos_));
-        pathToImage = pathToImage_;
-        
-        text = IMG_LoadTexture(ren, pathToImage_);
-        if(text == NULL) return false;
-        return true;
-    } 
+    // creates texture according to image path
+    bool init(SDL_Renderer* ren, const char* pathToImage_, Vector2fPtr pos_);
     virtual void draw(SDL_Renderer* ren) = 0; // drawing function. should be overrided for each object
 };

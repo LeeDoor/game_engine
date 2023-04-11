@@ -6,7 +6,5 @@ class GameObject {
 protected:
     Vector2fPtr pos;
 public:
-    void init(Vector2fPtr pos_) {
-        pos = std::move(pos_);
-    }
+    bool init(Vector2fPtr pos_);
 };
