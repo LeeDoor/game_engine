@@ -1,5 +1,6 @@
 #pragma once
 #include "drawable.hpp"
+#include "drawable.hpp"
 #include "vector2.hpp"
 
 class Hero : public Drawable {
