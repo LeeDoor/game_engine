@@ -23,11 +23,14 @@ bool Window::init(const char *title, int x, int y, int w, int h, Uint32 flags) {
 }
 
 bool Window::load() {
-    Drawable* hero = new Hero();
-    Vector2iPtr pos = std::make_unique<Vector2i>(Vector2i{50, 50});
-    if(!hero->init(ren, "res/smile.bmp", std::move(pos))) return false;
-    toDraw.push_back(hero);
+    GameObjectShar hero = std::make_shared<GameObject>();
+    hero->init(std::make_unique<Vector2i>(Vector2i{100, 100}));
 
+    DrawableShar draw = hero->addComponent<Drawable>().first;
+    draw->init(hero, std::make_unique<Vector2i>(Vector2i{20, 50}), ren, "res/smile.bmp");
+
+    toDraw.push_back(draw);
+    objects.push_back(hero);
     return true;
 }
 
@@ -60,8 +63,8 @@ bool Window::update() {
 
         ///screen render///
         SDL_RenderClear(ren);
-        for(Drawable* cur : toDraw){ // cycle to draw each drawable element in vector
-            cur->draw(ren);
+        for(DrawableShar cur : toDraw){ // cycle to draw each drawable element in vector
+            cur->draw();
         }
         SDL_RenderPresent(ren);
     }

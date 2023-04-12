@@ -1,7 +1,7 @@
 #pragma once
 #include <SDL.h>
 #include <vector>
-#include "drawable.hpp"
+#include "game_object.hpp"
 
 class Window {
 public:
@@ -18,7 +18,8 @@ private:
     bool quit();
 
 
-    std::vector<Drawable*> toDraw;
+    std::vector<DrawableShar> toDraw;
+    std::vector<GameObjectShar> objects;
 
     const int SCR_W = 1000; // window width
     const int SCR_H = 1000; // window height
