@@ -82,6 +82,8 @@ typedef Vector2<float> Vector2f;
 typedef Vector2<int> Vector2i;
 typedef std::unique_ptr<Vector2f> Vector2fPtr;
 typedef std::unique_ptr<Vector2i> Vector2iPtr;
+typedef std::shared_ptr<Vector2f> Vector2fShar;
+typedef std::shared_ptr<Vector2i> Vector2iShar;
 
 template<typename T>
 Vector2<float> Vector2<T>::Up = Vector2<float>(0, 1); 

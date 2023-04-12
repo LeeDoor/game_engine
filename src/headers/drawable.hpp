@@ -1,15 +1,22 @@
 #pragma once
 #include <SDL.h>
 #include <SDL_image.h>
-#include "game_object.hpp"
+#include "component.hpp"
+#include "vector2.hpp"
+
 //abstract class for each object which can be drawn
-class Drawable : public GameObject {
+class Drawable : public Component {
 protected:
+    SDL_Renderer* ren; // renderer for drawing
     SDL_Texture* text; // texture object of this class
     const char* pathToImage; // path to texture image
-
+    Vector2iPtr textSize;
 public:
     // creates texture according to image path
-    bool init(SDL_Renderer* ren, const char* pathToImage_, Vector2iPtr pos_);
-    virtual void draw(SDL_Renderer* ren) = 0; // drawing function. should be overrided for each object
+    bool init(GameObjectShar go_, Vector2iPtr size_, SDL_Renderer* ren_, const char* pathToImage_);
+    void draw(); // drawing update function
+    void update() override {}
 };
+
+typedef std::unique_ptr<Drawable> DrawablePtr;
+typedef std::shared_ptr<Drawable> DrawableShar;
