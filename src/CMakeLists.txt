@@ -2,12 +2,10 @@ cmake_minimum_required(VERSION 3.13)
 
 target_sources(srcl PRIVATE 
     ${CMAKE_CURRENT_SOURCE_DIR}/window.cpp 
-    ${CMAKE_CURRENT_SOURCE_DIR}/hero.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/game_object.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/physic.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/drawable.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/component.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/headers/hero.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/headers/component.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/headers/components.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/headers/physic.hpp
