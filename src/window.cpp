@@ -22,11 +22,9 @@ bool Window::init(const char *title, int x, int y, int w, int h, Uint32 flags) {
 }
 
 bool Window::load() {
-    GameObjectBuilder builder;
-    GameObjectShar hero = 
-        builder.reset(std::make_unique<Vector2i>(Vector2i{100, 100}))
-        ->buildDrawable(std::make_unique<Vector2i>(Vector2i{20, 50}), ren, "res/smile.bmp")
-        ->getValue();
+    GameObjectDirector dir;
+    dir.buildPlayer(ren);
+    GameObjectShar hero = dir.getObject();
     toDraw.push_back(hero->getComponent<Drawable>());
     objects.push_back(hero);
     return true;
