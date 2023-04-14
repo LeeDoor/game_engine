@@ -6,6 +6,8 @@ target_sources(srcl PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/physic.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/drawable.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/component.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/go_builder.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/headers/go_builder.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/headers/component.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/headers/components.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/headers/physic.hpp

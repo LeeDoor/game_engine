@@ -2,6 +2,7 @@
 #include <SDL.h>
 #include <vector>
 #include "game_object.hpp"
+#include "go_builder.hpp"
 
 class Window {
 public:

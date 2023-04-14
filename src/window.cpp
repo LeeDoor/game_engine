@@ -1,6 +1,5 @@
 #include "window.hpp"
 #include <ctime>
-#include "hero.hpp"
 
 Window::Window() {
     if(!init("time shifter", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCR_W, SCR_H, 0))
@@ -23,13 +22,12 @@ bool Window::init(const char *title, int x, int y, int w, int h, Uint32 flags) {
 }
 
 bool Window::load() {
-    GameObjectShar hero = std::make_shared<GameObject>();
-    hero->init(std::make_unique<Vector2i>(Vector2i{100, 100}));
-
-    DrawableShar draw = hero->addComponent<Drawable>().first;
-    draw->init(hero, std::make_unique<Vector2i>(Vector2i{20, 50}), ren, "res/smile.bmp");
-
-    toDraw.push_back(draw);
+    GameObjectBuilder builder;
+    GameObjectShar hero = 
+        builder.reset(std::make_unique<Vector2i>(Vector2i{100, 100}))
+        ->buildDrawable(std::make_unique<Vector2i>(Vector2i{20, 50}), ren, "res/smile.bmp")
+        ->getValue();
+    toDraw.push_back(hero->getComponent<Drawable>());
     objects.push_back(hero);
     return true;
 }
