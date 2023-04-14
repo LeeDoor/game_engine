@@ -1,13 +1,18 @@
 #pragma once
 #include "go_builder.hpp"
 
+// director for GameObjectBuilder class
 class GameObjectDirector {
 private:
-    GameObjectBuilderPtr builder;
+    GameObjectBuilderPtr builder; // given builder
 
 public:
     GameObjectDirector();
 
-    GameObjectShar getObject();
-    void buildPlayer(SDL_Renderer *ren_);
+    GameObjectShar getObject(); // returns builded object from builder
+    void buildPlayer(SDL_Renderer *ren_); // builds player object
+
+    /*
+        keep adding new functions for other objects like enemie1 enemie2 wall1 wall2 etc.
+    */
 };
