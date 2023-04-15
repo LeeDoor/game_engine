@@ -23,6 +23,7 @@ public:
 
     // normalizes current vector
     void normalize() {
+        if(*this == Zero) return;
         float inv_length = 1.0f / len();
         *this *= inv_length;
     }

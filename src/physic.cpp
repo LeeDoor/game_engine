@@ -2,7 +2,7 @@
 #include <map>
 #include <algorithm>
 
-float Physic::GRAVITY_FORCE = 0.2;
+float Physic::GRAVITY_FORCE = 0.01f;
 Vector2f Physic::GRAVITY_DIR = Vector2f::Down;
 
 float Physic::getForce() { 
@@ -78,9 +78,8 @@ void Physic::update () {
     }
     Vector2f newPos = dir * force + GRAVITY_DIR * GRAVITY_FORCE;
     go.lock()->pos += Vector2i(newPos.x, newPos.y);
-    force = newPos.len();
-    newPos.normalize();
-    dir = newPos;
+    setForce(newPos.len());
+    setDir(newPos);
 }
 void Physic::print(){
     Vector2i pos = go.lock()->getPos();

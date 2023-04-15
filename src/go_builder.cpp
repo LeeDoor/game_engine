@@ -18,6 +18,6 @@ GameObjectBuilder* GameObjectBuilder::buildDrawable(Vector2i size_, SDL_Renderer
 
 GameObjectBuilder* GameObjectBuilder::buildPhysic(Vector2i size_) {
     value->addComponent<Physic>().first
-        ->init(value, size_, Vector2f{1, -1}, 10);
+        ->init(value, size_, Vector2f::Zero, 0);
     return this;
 }   
