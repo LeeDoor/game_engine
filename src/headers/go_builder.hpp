@@ -10,11 +10,11 @@ private:
 public:
     GameObjectShar getValue(); // returns value
 
-    GameObjectBuilder* reset(Vector2i pos_); // resets value
+    GameObjectBuilder* reset(Vector2f pos_); // resets value
     // builds Drawable component for value
-    GameObjectBuilder* buildDrawable(Vector2i size_, SDL_Renderer *ren_, const char *pathToImage_);
+    GameObjectBuilder* buildDrawable(Vector2f size_, SDL_Renderer *ren_, const char *pathToImage_);
     // builds Physic component for value
-    GameObjectBuilder* buildPhysic(Vector2i size_);
+    GameObjectBuilder* buildPhysic(Vector2f size_);
 
     /*
         keep adding other build functions for other components

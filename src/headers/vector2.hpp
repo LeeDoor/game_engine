@@ -80,7 +80,6 @@ public:
 };
 
 typedef Vector2<float> Vector2f;
-typedef Vector2<int> Vector2i;
 
 template<typename T>
 Vector2<float> Vector2<T>::Up = Vector2<float>(0, -1); 

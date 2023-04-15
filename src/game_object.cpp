@@ -1,11 +1,11 @@
 #include "game_object.hpp"
 
-bool GameObject::init(Vector2i pos_) {
+bool GameObject::init(Vector2f pos_) {
     pos = pos_;
     return true;
 }
 
-Vector2i GameObject::getPos() {
+Vector2f GameObject::getPos() {
     return pos;
 }
 

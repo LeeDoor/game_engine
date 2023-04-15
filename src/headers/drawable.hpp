@@ -10,10 +10,10 @@ protected:
     SDL_Renderer* ren; // renderer for drawing
     SDL_Texture* text; // texture object of this class
     const char* pathToImage; // path to texture image
-    Vector2i textSize;
+    Vector2f textSize;
 public:
     // creates texture according to image path
-    bool init(GameObjectShar go_, Vector2i size_, SDL_Renderer* ren_, const char* pathToImage_);
+    bool init(GameObjectShar go_, Vector2f size_, SDL_Renderer* ren_, const char* pathToImage_);
     void draw(); // drawing update function
     void update() override {}
 };

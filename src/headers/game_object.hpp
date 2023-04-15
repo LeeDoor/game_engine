@@ -6,14 +6,14 @@
 
 class GameObject {
 protected:
-    Vector2i pos;
+    Vector2f pos;
     std::vector<ComponentShar> components;
 
 public:
-    bool init(Vector2i pos_);
+    bool init(Vector2f pos_);
 
     //returns shared pointer to position
-    Vector2i getPos();
+    Vector2f getPos();
 
     // gets needed component from vector 
     template<typename T>

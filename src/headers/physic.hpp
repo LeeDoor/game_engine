@@ -10,7 +10,7 @@ typedef std::unique_ptr<SDL_Rect> RectPtr;
 class Physic : public Component {
 private:
 protected:
-    Vector2i size; // collider hitbox
+    Vector2f size; // collider hitbox
     Vector2f dir; // direction of force
     float force; // force value
     
@@ -31,11 +31,11 @@ public:
     //  1 4 3
     //    2
     // returns 0 if collision is upside, 1 if leftside, 2 if downside and 3 if rightside
-    static Direction isCollide(Vector2i fPos, Vector2i fSize, Vector2i sPos, Vector2i sSize);
+    static Direction isCollide(Vector2f fPos, Vector2f fSize, Vector2f sPos, Vector2f sSize);
     static Direction isCollide(SDL_Rect first, SDL_Rect second);
 
     bool init(GameObjectShar go_);
-    bool init(GameObjectShar go_, Vector2i size_, Vector2f dir_, float force_);
+    bool init(GameObjectShar go_, Vector2f size_, Vector2f dir_, float force_);
     void update () override;
     void print();
     void draw(SDL_Renderer* ren);
