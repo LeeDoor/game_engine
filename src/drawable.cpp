@@ -1,7 +1,7 @@
 #include "drawable.hpp"
 #include "game_object.hpp"
 
-bool Drawable::init(GameObjectShar go_, Vector2f size_, SDL_Renderer* ren_, const char* pathToImage_) {
+bool Drawable::init(GameObjectShar go_, Vector2i size_, SDL_Renderer* ren_, const char* pathToImage_) {
     if(!Component::init(go_))return false;
 
     textSize = size_;
@@ -14,6 +14,6 @@ bool Drawable::init(GameObjectShar go_, Vector2f size_, SDL_Renderer* ren_, cons
 } 
 
 void Drawable::draw() {
-    Vector2f pos = go.lock()->getPos();
-    SDL_RenderCopy(ren, text, NULL, new SDL_Rect {(int)pos.x, (int)pos.y, (int)textSize.x, (int)textSize.y});
+    Vector2i pos = go.lock()->getPos();
+    SDL_RenderCopy(ren, text, NULL, new SDL_Rect {pos.x, pos.y, textSize.x, textSize.y});
 }

@@ -9,8 +9,8 @@ GameObjectShar GameObjectDirector::getObject() {
 }
 
 void GameObjectDirector::buildPlayer(SDL_Renderer *ren_) {
-    builder->reset(Vector2f{100, 100})
-        ->buildDrawable(Vector2f{20, 50}, ren_, "res/smile.bmp")
-        ->buildPhysic(Vector2f{20, 50})
+    builder->reset(Vector2i{100, 100})
+        ->buildDrawable(Vector2i{20, 50}, ren_, "res/smile.bmp")
+        ->buildPhysic(Vector2i{20, 50})
         ->getValue();
 }

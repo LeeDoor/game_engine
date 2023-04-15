@@ -1,19 +1,19 @@
 #pragma once
-#include "vector2f.hpp"
+#include "vector2.hpp"
 #include <memory>
 #include <vector>
 #include "components.hpp"
 
 class GameObject {
 protected:
-    Vector2f pos;
+    Vector2i pos;
     std::vector<ComponentShar> components;
 
 public:
-    bool init(Vector2f pos_);
+    bool init(Vector2i pos_);
 
     //returns shared pointer to position
-    Vector2f getPos();
+    Vector2i getPos();
 
     // gets needed component from vector 
     template<typename T>

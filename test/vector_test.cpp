@@ -1,4 +1,4 @@
-#include "vector2f.hpp"
+#include "vector2.hpp"
 #include "iostream"
 
 int main() {

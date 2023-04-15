@@ -1,6 +1,6 @@
 #include "physic.hpp"
 
-float Physic::GRAVITY_FORCE = 3;
+float Physic::GRAVITY_FORCE = 0.2;
 Vector2f Physic::GRAVITY_DIR = Vector2f::Down;
 
 float Physic::getForce() { 
@@ -18,7 +18,7 @@ void Physic::setDir(Vector2f dir_) {
     dir = dir_;
 }
 
-int Physic::isCollide(Vector2f fPos, Vector2f fSize, Vector2f sPos, Vector2f sSize) {
+int Physic::isCollide(Vector2i fPos, Vector2i fSize, Vector2i sPos, Vector2i sSize) {
     return isCollide(SDL_Rect{(int)fPos.x, (int)fPos.y, (int)fSize.x, (int)fSize.y}, 
                      SDL_Rect{(int)sPos.x, (int)sPos.y, (int)sSize.x, (int)sSize.y});
 }
@@ -30,9 +30,9 @@ int Physic::isCollide(SDL_Rect first, SDL_Rect second){
     return 4;
 }
 bool Physic::init(GameObjectShar go_) {
-    return init(go_, Vector2f{ 1, 1 }, Vector2f{1, 1}, 0);
+    return init(go_, Vector2i{ 1, 1 }, Vector2f{1, 1}, 0);
 }
-bool Physic::init(GameObjectShar go_, Vector2f size_, Vector2f dir_, float force_) {
+bool Physic::init(GameObjectShar go_, Vector2i size_, Vector2f dir_, float force_) {
     Component::init(go_);
     size = size_;
     setDir(dir_);
@@ -47,13 +47,13 @@ void Physic::update () {
         return;
     }
     Vector2f newPos = dir * force + GRAVITY_DIR * GRAVITY_FORCE;
-    go.lock()->pos += Vector2f(newPos.x, newPos.y);
+    go.lock()->pos += Vector2i(newPos.x, newPos.y);
     force = newPos.len();
     newPos.normalize();
     dir = newPos;
 }
 void Physic::print(){
-    Vector2f pos = go.lock()->getPos();
+    Vector2i pos = go.lock()->getPos();
     std::cout << "collider: " << pos.x << ' ' << pos.y << ' ' << size.x << " " << size.y << "\n"
         << "direction: " << dir.x << " " << dir.y << '\n'
         << "force: " << force << "\n";
