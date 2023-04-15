@@ -1,5 +1,6 @@
 #include "physic.hpp"
 #include <map>
+#include <algorithm>
 
 float Physic::GRAVITY_FORCE = 0.2;
 Vector2f Physic::GRAVITY_DIR = Vector2f::Down;
@@ -44,22 +45,18 @@ Direction Physic::isCollide(SDL_Rect first, SDL_Rect second){
     
     //if figure collides left and right, it means figure is inside. should be removed both sides
     if(dist.contains(Direction::Left) && dist.contains(Direction::Right)) {
-        dist[Left] = -2;
-        dist[Right] = -2;
+        dist[Left] = 999;
+        dist[Right] = 999;
     }
     if(dist.contains(Direction::Up) && dist.contains(Direction::Down)) {
-        dist[Up] = -2;
-        dist[Down] = -2;
+        dist[Up] = 999;
+        dist[Down] = 999;
     }
 
 
-    std::pair <Direction, int> max = std::make_pair(Direction::None, -1);
-    for(auto pair : dist) {
-        if(pair.second > max.second) {
-            max = pair;
-        }
-    }
-    return max.first;
+    std::pair <Direction, int> min = *std::min_element(dist.begin(), dist.end(), 
+                [](const auto& l, const auto& r) { return l.second < r.second; });
+    return min.first;
 
 }
 bool Physic::init(GameObjectShar go_) {

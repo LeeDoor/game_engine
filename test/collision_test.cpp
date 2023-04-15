@@ -4,8 +4,8 @@ int main() {
     SDL_Rect r1 {0, 0, 2, 5}, 
     r2 {1, 2, 3, 5};
     int a = Physic::isCollide(r1, r2);   
-    std::cout << a << " should be equal Down(2)\n";
-    if(a != 2) return 1;
+    std::cout << a << "-(1)\n";
+    if(a != 1) return 1;
 
     r1 = SDL_Rect {0, 0, 2, 5};
     r2 = SDL_Rect {1, 4, 3, 5};
@@ -55,6 +55,13 @@ int main() {
     a = Physic::isCollide(r1, r2);   
     std::cout << a << "-(3)\n";
     if(a != 3) return 1;
+    
+    r1 = SDL_Rect {0, 0, 3, 3};
+    r2 = SDL_Rect {2, 1, 6, 6};
+    a = Physic::isCollide(r1, r2);   
+    std::cout << a << "-(3)\n";
+    if(a != 1) return 1;
+    
     
     
     
