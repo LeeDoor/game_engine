@@ -1,19 +1,19 @@
 #pragma once
-#include "vector2.hpp"
+#include "vector2f.hpp"
 #include <memory>
 #include <vector>
 #include "components.hpp"
 
 class GameObject {
 protected:
-    Vector2iShar pos;
+    Vector2f pos;
     std::vector<ComponentShar> components;
 
 public:
-    bool init(Vector2iPtr pos_);
+    bool init(Vector2f pos_);
 
     //returns shared pointer to position
-    Vector2iShar getPos();
+    Vector2f getPos();
 
     // gets needed component from vector 
     template<typename T>
@@ -42,6 +42,9 @@ public:
 
     //updates data according to all components
     void update();
+
+    friend class Component;
+    friend class Physic;
 };
 
 typedef std::shared_ptr<GameObject> GameObjectShar;

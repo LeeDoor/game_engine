@@ -1,29 +1,29 @@
 #pragma once 
 #include <SDL.h>
-#include "vector2.hpp"
+#include "vector2f.hpp"
 #include "game_object.hpp"
 #include <memory>
 #include <iostream>
 
 typedef std::unique_ptr<SDL_Rect> RectPtr;
 
-class Physic : public GameObject {
+class Physic : public Component {
 private:
 protected:
-    RectPtr coll; // collider hitbox
-    Vector2fPtr dir; // direction of force
+    Vector2f size; // collider hitbox
+    Vector2f dir; // direction of force
     float force; // force value
     
 public:
-    const float GRAVITY_FORCE = 5;
-    const Vector2f GRAVITY_DIR = Vector2f::Down;
+    static float GRAVITY_FORCE;
+    static Vector2f GRAVITY_DIR;
 
     /// access methods 
     float getForce();
     void setForce(float force_);
 
-    Vector2f* getDir();
-    void setDir(Vector2fPtr dir_);
+    Vector2f getDir();
+    void setDir(Vector2f dir_);
 
     /////////
 
@@ -31,10 +31,11 @@ public:
     //  1 4 3
     //    2
     // returns 0 if collision is upside, 1 if leftside, 2 if downside and 3 if rightside
-    static int isCollide(SDL_Rect& first, SDL_Rect& second);
+    static int isCollide(Vector2f fPos, Vector2f fSize, Vector2f sPos, Vector2f sSize);
+    static int isCollide(SDL_Rect first, SDL_Rect second);
 
-    bool init();
-    bool init(Vector2iPtr pos_, RectPtr coll_, Vector2fPtr dir_, float force_);
-    void update (int collision = 4);
+    bool init(GameObjectShar go_);
+    bool init(GameObjectShar go_, Vector2f size_, Vector2f dir_, float force_);
+    void update () override;
     void print();
 };

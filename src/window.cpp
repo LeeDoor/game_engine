@@ -59,6 +59,9 @@ bool Window::update() {
 
         ///screen render///
         SDL_RenderClear(ren);
+        for(GameObjectShar cur : objects){ // cycle to update every gameobject
+            cur->update();
+        }
         for(DrawableShar cur : toDraw){ // cycle to draw each drawable element in vector
             cur->draw();
         }

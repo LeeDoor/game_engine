@@ -1,11 +1,11 @@
 #include "game_object.hpp"
 
-bool GameObject::init(Vector2iPtr pos_) {
-    pos = std::move(pos_);
+bool GameObject::init(Vector2f pos_) {
+    pos = pos_;
     return true;
 }
 
-Vector2iShar GameObject::getPos() {
+Vector2f GameObject::getPos() {
     return pos;
 }
 

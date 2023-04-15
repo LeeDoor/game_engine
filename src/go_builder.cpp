@@ -5,13 +5,19 @@ GameObjectShar GameObjectBuilder::getValue() {
     return value;
 }
 
-GameObjectBuilder* GameObjectBuilder::reset(Vector2iPtr pos_) {
+GameObjectBuilder* GameObjectBuilder::reset(Vector2f pos_) {
     value = std::make_shared<GameObject>();
-    value->init(std::move(pos_));
+    value->init(pos_);
     return this;
 }
-GameObjectBuilder* GameObjectBuilder::buildDrawable(Vector2iPtr size_, SDL_Renderer *ren_, const char *pathToImage_) {
+GameObjectBuilder* GameObjectBuilder::buildDrawable(Vector2f size_, SDL_Renderer *ren_, const char *pathToImage_) {
     value->addComponent<Drawable>().first 
-            ->init(value, std::move(size_), ren_, pathToImage_);
+            ->init(value, size_, ren_, pathToImage_);
     return this;
 }
+
+GameObjectBuilder* GameObjectBuilder::buildPhysic(Vector2f size_) {
+    value->addComponent<Physic>().first
+        ->init(value, size_, Vector2f::Right, 5);
+    return this;
+}   
