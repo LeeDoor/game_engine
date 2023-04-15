@@ -20,6 +20,7 @@ private:
 
 
     std::vector<DrawableShar> toDraw;
+    std::vector<PhysicShar> physics;
     std::vector<GameObjectShar> objects;
 
     const int SCR_W = 1000; // window width

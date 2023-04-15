@@ -16,6 +16,7 @@ target_sources(srcl PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/headers/game_object.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/headers/vector2.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/headers/drawable.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/headers/direction.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/headers/window.hpp)
 
 target_include_directories(srcl PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/headers)

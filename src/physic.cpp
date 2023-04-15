@@ -53,7 +53,7 @@ Direction Physic::isCollide(SDL_Rect first, SDL_Rect second){
         dist[Down] = 999;
     }
 
-
+    //find minimal distance to border and return its side
     std::pair <Direction, int> min = *std::min_element(dist.begin(), dist.end(), 
                 [](const auto& l, const auto& r) { return l.second < r.second; });
     return min.first;
@@ -87,4 +87,11 @@ void Physic::print(){
     std::cout << "collider: " << pos.x << ' ' << pos.y << ' ' << size.x << " " << size.y << "\n"
         << "direction: " << dir.x << " " << dir.y << '\n'
         << "force: " << force << "\n";
+}
+
+void Physic::draw(SDL_Renderer* ren) {
+    Vector2i pos = go.lock()->getPos();
+    SDL_SetRenderDrawColor(ren, 38, 255, 74, 255);
+    SDL_RenderDrawRect(ren, new SDL_Rect{pos.x, pos.y, size.x, size.y});
+    SDL_SetRenderDrawColor(ren, 0, 0, 0, 255);
 }

@@ -26,6 +26,7 @@ bool Window::load() {
     dir.buildPlayer(ren);
     GameObjectShar hero = dir.getObject();
     toDraw.push_back(hero->getComponent<Drawable>());
+    physics.push_back(hero->getComponent<Physic>());
     objects.push_back(hero);
     return true;
 }
@@ -33,6 +34,7 @@ bool Window::load() {
 bool Window::update() {
     srand(time(0));
     gameRunning = true; // true if game loop is going
+    bool physicDraw = true; // draw physic colliders
     SDL_Event e; // event handler
 
     // variables to count time between ticks
@@ -64,6 +66,11 @@ bool Window::update() {
         }
         for(DrawableShar cur : toDraw){ // cycle to draw each drawable element in vector
             cur->draw();
+        }
+        if(physicDraw) {
+            for(PhysicShar cur : physics) {
+                cur->draw(ren);
+            }
         }
         SDL_RenderPresent(ren);
     }

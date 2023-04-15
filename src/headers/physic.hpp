@@ -38,4 +38,8 @@ public:
     bool init(GameObjectShar go_, Vector2i size_, Vector2f dir_, float force_);
     void update () override;
     void print();
+    void draw(SDL_Renderer*);
 };
+
+typedef std::shared_ptr<Physic> PhysicShar;
+typedef std::unique_ptr<Physic> PhysicPtr;
