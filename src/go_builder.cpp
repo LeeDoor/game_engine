@@ -10,14 +10,21 @@ GameObjectBuilder* GameObjectBuilder::reset(Vector2f pos_) {
     value->init(pos_);
     return this;
 }
-GameObjectBuilder* GameObjectBuilder::buildDrawable(Vector2f size_, SDL_Renderer *ren_, const char *pathToImage_) {
+GameObjectBuilder* GameObjectBuilder::buildSpriteRenderer(Vector2f size_, SDL_Renderer *ren_, const char *pathToImage_) {
     value->addComponent<SpriteRender>().first 
             ->init(value, size_, ren_, pathToImage_);
     return this;
 }
 
-GameObjectBuilder* GameObjectBuilder::buildPhysic() {
+GameObjectBuilder* GameObjectBuilder::buildRigidbody() {
     value->addComponent<Rigidbody>().first
-        ->init(value, Vector2f::Up, 70);
+        ->init(value, Vector2f::Up, 40);
     return this;
 }   
+
+
+GameObjectBuilder* GameObjectBuilder::buildCollider(Vector2f size_) {
+    value->addComponent<Collider>().first
+        ->init(value, size_);
+    return this;
+}

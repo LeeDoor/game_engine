@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.13)
 project (platformer)
 set (CMAKE_CXX_STANDARD 20)
-
+set(CMAKE_BUILD_TYPE Debug)
 add_library(srcl "")
 add_subdirectory(src)
 

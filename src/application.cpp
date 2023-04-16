@@ -1,6 +1,8 @@
 #include "application.hpp"
 #include <ctime>
 
+#define COLLIDER_DRAW
+
 void Application::init() {
     renderWindow = std::make_shared<RenderWindow>();
     renderWindow->init("time shifter", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 0);
@@ -14,6 +16,9 @@ void Application::load() {
     dir.buildPlayer(ren);
     GameObjectShar hero = dir.getObject();
     toDraw.push_back(hero->getComponent<SpriteRender>());
+#ifdef COLLIDER_DRAW
+    toDraw.push_back(hero->getComponent<Collider>());
+#endif
     physics.push_back(hero->getComponent<Rigidbody>());
     objects.push_back(hero);
 }
@@ -21,7 +26,6 @@ void Application::load() {
 void Application::update() {
     srand(time(0));
     gameRunning = true; // true if game loop is going
-    bool physicDraw = true; // draw physic colliders
     SDL_Event e; // event handler
 
     // variables to count time between ticks

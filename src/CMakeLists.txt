@@ -10,6 +10,7 @@ target_sources(srcl PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/sprite_render.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/render_window.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/application.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/collider.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/headers/go_builder.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/headers/physics.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/headers/go_director.hpp
@@ -22,7 +23,8 @@ target_sources(srcl PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/headers/direction.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/headers/render_window.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/headers/application.hpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/headers/drawable.hpp)
+    ${CMAKE_CURRENT_SOURCE_DIR}/headers/drawable.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/headers/collider.hpp)
 
 target_include_directories(srcl PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/headers)
 

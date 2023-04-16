@@ -6,6 +6,8 @@ typedef std::shared_ptr<GameObject> GameObjectShar;
 typedef std::weak_ptr<GameObject> GameObjectWeak;
 typedef std::unique_ptr<GameObject> GameObjectPtr;
 
+//base class component
+//!!!dont forget to init base component class and update virtual function!!!
 class Component {
 protected:
     GameObjectWeak go;

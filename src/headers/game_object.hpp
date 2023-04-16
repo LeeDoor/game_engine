@@ -45,6 +45,7 @@ public:
 
     friend class Component;
     friend class Rigidbody;
+    friend class Collider;
 };
 
 typedef std::shared_ptr<GameObject> GameObjectShar;
