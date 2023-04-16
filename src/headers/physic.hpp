@@ -27,10 +27,8 @@ public:
 
     /////////
 
-    //    0
-    //  1 4 3
-    //    2
-    // returns 0 if collision is upside, 1 if leftside, 2 if downside and 3 if rightside
+
+    //returns direction where first collider collides second one
     static Direction isCollide(Vector2f fPos, Vector2f fSize, Vector2f sPos, Vector2f sSize);
     static Direction isCollide(SDL_Rect first, SDL_Rect second);
 
