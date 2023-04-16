@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.13)
 
 target_sources(srcl PRIVATE 
     ${CMAKE_CURRENT_SOURCE_DIR}/window.cpp 
+    ${CMAKE_CURRENT_SOURCE_DIR}/render_window.cpp 
     ${CMAKE_CURRENT_SOURCE_DIR}/game_object.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/physic.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/drawable.cpp
@@ -17,6 +18,7 @@ target_sources(srcl PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/headers/vector2.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/headers/drawable.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/headers/direction.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/headers/render_window.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/headers/window.hpp)
 
 target_include_directories(srcl PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/headers)
