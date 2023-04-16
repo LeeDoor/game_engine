@@ -14,7 +14,7 @@ public:
     // builds Drawable component for value
     GameObjectBuilder* buildDrawable(Vector2f size_, SDL_Renderer *ren_, const char *pathToImage_);
     // builds Rigidbody component for value
-    GameObjectBuilder* buildPhysic(Vector2f size_);
+    GameObjectBuilder* buildPhysic();
 
     /*
         keep adding other build functions for other components

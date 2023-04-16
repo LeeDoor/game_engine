@@ -16,8 +16,8 @@ GameObjectBuilder* GameObjectBuilder::buildDrawable(Vector2f size_, SDL_Renderer
     return this;
 }
 
-GameObjectBuilder* GameObjectBuilder::buildPhysic(Vector2f size_) {
+GameObjectBuilder* GameObjectBuilder::buildPhysic() {
     value->addComponent<Rigidbody>().first
-        ->init(value, size_, Vector2f::Up, 70);
+        ->init(value, Vector2f::Up, 70);
     return this;
 }   

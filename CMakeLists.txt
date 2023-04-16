@@ -9,7 +9,6 @@ add_executable(platformer main.cpp)
 
 target_link_libraries(platformer PUBLIC srcl)
 
-
 #TESTS 
 set(testing true)
 if(testing)
