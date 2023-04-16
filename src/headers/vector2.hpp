@@ -1,6 +1,8 @@
 #pragma once
 #include <memory>
 #include <cmath>
+#include <map>
+#include "direction.hpp"
 
 //standard two-dimentional vector
 template<typename T>
@@ -14,16 +16,11 @@ public:
     }
     Vector2(T x_, T y_) : x(x_), y(y_) {}
 
-    static Vector2<float> Up; 
-    static Vector2<float> Down;
-    static Vector2<float> Right;
-    static Vector2<float> Left;
-    static Vector2<float> One;
-    static Vector2<float> Zero;
+    static std::map<Direction, Vector2<float>> STD;
 
     // normalizes current vector
     void normalize() {
-        if(*this == Zero) return;
+        if(*this == STD[Direction::None]) return;
         float inv_length = 1.0f / len();
         *this *= inv_length;
     }
@@ -82,14 +79,21 @@ public:
 typedef Vector2<float> Vector2f;
 
 template<typename T>
-Vector2<float> Vector2<T>::Up = Vector2<float>(0, -1); 
-template<typename T>
-Vector2<float> Vector2<T>::Down = Vector2<float>{0, 1};
-template<typename T>
-Vector2<float> Vector2<T>::Right = Vector2<float>{1, 0};
-template<typename T>
-Vector2<float> Vector2<T>::Left = Vector2<float>{-1, 0};
-template<typename T>
-Vector2<float> Vector2<T>::One = Vector2<float>{1, 1};
-template<typename T>
-Vector2<float> Vector2<T>::Zero = Vector2<float>{0, 0};
+std::map<Direction, Vector2f> Vector2<T>::STD {
+    {Direction::Up, Vector2f{0, -1}},
+    {Direction::Down, Vector2f{0, 1}},
+    {Direction::Right, Vector2f{1, 0}},
+    {Direction::Left, Vector2f{-1, 0}},
+    {Direction::None, Vector2f{0, 0}}
+};
+
+// template<typename T>
+// Vector2<float> Vector2<T>::Up = 
+// template<typename T>
+// Vector2<float> Vector2<T>::Down = 
+// template<typename T>
+// Vector2<float> Vector2<T>::Right = 
+// template<typename T>
+// Vector2<float> Vector2<T>::Left = 
+// template<typename T>
+// Vector2<float> Vector2<T>::Zero = 

@@ -11,14 +11,14 @@ public:
     void init();
 private:
     void update(); //main game loop
-    //loads textures
-    void load();
+    void load(); //loads gameobjects
+    void collide(); //checks collision between all colliders 
 
     RenderWindowShar renderWindow;
 
     std::vector<DrawableShar> toDraw;
-    std::vector<RigidbodyShar> physics;
     std::vector<GameObjectShar> objects;
+    std::vector<ColliderShar> colliders;
 
     const int MAX_FPS = 20; // max fps
     const double FRAME_TIME = 1000/(double)MAX_FPS; // time between frame changings

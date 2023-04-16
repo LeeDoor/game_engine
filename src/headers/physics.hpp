@@ -10,6 +10,6 @@ public:
     static Vector2f GRAVITY_DIR;
 
     //returns direction where first collider collides second one
-    static Direction isCollide(Vector2f fPos, Vector2f fSize, Vector2f sPos, Vector2f sSize);
-    static Direction isCollide(SDL_Rect first, SDL_Rect second);
+    static std::pair<Direction, int> isCollide(Vector2f fPos, Vector2f fSize, Vector2f sPos, Vector2f sSize);
+    static std::pair<Direction, int> isCollide(SDL_Rect* first, SDL_Rect* second);
 };

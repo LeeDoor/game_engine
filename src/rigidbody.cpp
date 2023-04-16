@@ -30,7 +30,7 @@ void Rigidbody::update () {
     int collision = 4;
     if(collision == 2){
         force = 0;
-        dir = Vector2f::Zero;
+        dir = Vector2f::STD[Direction::None];
         return;
     }
     Vector2f newPos = dir * force + Physics::GRAVITY_DIR * Physics::GRAVITY_FORCE;

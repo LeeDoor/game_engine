@@ -1,7 +1,9 @@
 #include "application.hpp"
 #include <ctime>
+#include "physics.hpp"
 
-#define COLLIDER_DRAW
+//if defined, colliders will be drawn
+#define COLLIDER_DRAW 
 
 void Application::init() {
     renderWindow = std::make_shared<RenderWindow>();
@@ -13,14 +15,47 @@ void Application::init() {
 void Application::load() {
     SDL_Renderer* ren = renderWindow->getRenderer();
     GameObjectDirector dir;
-    dir.buildPlayer(ren);
+    dir.buildPlayer(ren, Vector2f{500, 500});
     GameObjectShar hero = dir.getObject();
     toDraw.push_back(hero->getComponent<SpriteRender>());
+    colliders.push_back(hero->getComponent<Collider>());
+    objects.push_back(hero);
+
+    dir.buildWall(ren, Vector2f{100, 800}, Vector2f {800, 100});
+    GameObjectShar wall = dir.getObject();
+    colliders.push_back(wall->getComponent<Collider>());
+    objects.push_back(wall);
+    toDraw.push_back(wall->getComponent<Collider>());
+
+    dir.buildWall(ren, Vector2f{100, 100}, Vector2f {100, 800});
+    wall = dir.getObject();
+    colliders.push_back(wall->getComponent<Collider>());
+    objects.push_back(wall);
+    toDraw.push_back(wall->getComponent<Collider>());
+
+    dir.buildWall(ren, Vector2f{800, 100}, Vector2f {100, 800});
+    wall = dir.getObject();
+    colliders.push_back(wall->getComponent<Collider>());
+    objects.push_back(wall);
+
 #ifdef COLLIDER_DRAW
     toDraw.push_back(hero->getComponent<Collider>());
+    toDraw.push_back(wall->getComponent<Collider>());
 #endif
-    physics.push_back(hero->getComponent<Rigidbody>());
-    objects.push_back(hero);
+
+
+}
+
+void Application::collide() {
+    for(auto it1 = colliders.begin(); it1 != colliders.end(); ++it1)  {
+        for(auto it2 = it1 + 1; it2 != colliders.end(); ++it2) {
+        auto pair = Physics::isCollide((*it1)->getRect(), (*it2)->getRect()); 
+            if(pair.first != Direction::None) {
+                (*it1)->collideFrom(pair.first, pair.second);
+                (*it2)->collideFrom(INV_DIR(pair.first), pair.second);
+            }
+        }
+    }
 }
 
 void Application::update() {
@@ -50,11 +85,14 @@ void Application::update() {
         }
         prevFrame = nextFrame;
 
-        ///screen render///
-        renderWindow->clear();
+        ///screen update///
         for(GameObjectShar cur : objects){ // cycle to update every gameobject
             cur->update();
         }
+        collide();
+        ///screen render///
+
+        renderWindow->clear();
         renderWindow->draw(toDraw);
         renderWindow->present();
     }

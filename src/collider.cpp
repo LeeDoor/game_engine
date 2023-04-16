@@ -6,8 +6,30 @@ void Collider::init(GameObjectShar go_, Vector2f size_) {
 }
 
 void Collider::draw(SDL_Renderer* ren) {
-    Vector2f pos = go.lock()->getPos();
     SDL_SetRenderDrawColor(ren, 38, 255, 74, 255);
-    SDL_RenderDrawRect(ren, new SDL_Rect{(int)pos.x, (int)pos.y, (int)size.x, (int)size.y});
+    SDL_RenderDrawRect(ren, getRect());
     SDL_SetRenderDrawColor(ren, 0, 0, 0, 255);
+}
+
+void Collider::collideFrom(Direction side, int depth) {
+    auto rigid = go.lock()->getComponent<Rigidbody>();
+    if(rigid == nullptr_t()) return;
+    //std::cout << side << "\n";
+
+    Vector2f sideV = Vector2f::STD[side];
+    go.lock()->pos = go.lock()->getPos() + sideV * -1;
+
+    Vector2f startD = rigid->getDir();
+    //for x
+    if(sideV.x != 0) {
+        startD.x = -startD.x;
+    }
+    else if(sideV.y != 0) {
+        startD.y = -startD.y;
+    }
+    rigid->setDir(startD);
+}
+SDL_Rect* Collider::getRect() {
+    Vector2f pos = go.lock()->getPos();
+    return new SDL_Rect {(int)pos.x, (int)pos.y, (int)size.x, (int)size.y};
 }

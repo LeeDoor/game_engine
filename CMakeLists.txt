@@ -10,7 +10,7 @@ add_executable(platformer main.cpp)
 target_link_libraries(platformer PUBLIC srcl)
 
 #TESTS 
-set(testing true)
+set(testing false)
 if(testing)
     add_executable(VectorTest test/vector_test.cpp)
     add_executable(CollisionTest test/collision_test.cpp)

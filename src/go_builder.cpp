@@ -18,7 +18,7 @@ GameObjectBuilder* GameObjectBuilder::buildSpriteRenderer(Vector2f size_, SDL_Re
 
 GameObjectBuilder* GameObjectBuilder::buildRigidbody() {
     value->addComponent<Rigidbody>().first
-        ->init(value, Vector2f::Up, 40);
+        ->init(value, Vector2f::STD[Direction::Right], 10);
     return this;
 }   
 
