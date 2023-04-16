@@ -21,7 +21,8 @@ target_sources(srcl PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/headers/sprite_render.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/headers/direction.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/headers/render_window.hpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/headers/application.hpp)
+    ${CMAKE_CURRENT_SOURCE_DIR}/headers/application.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/headers/drawable.hpp)
 
 target_include_directories(srcl PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/headers)
 

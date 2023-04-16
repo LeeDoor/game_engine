@@ -16,7 +16,7 @@ private:
 
     RenderWindowShar renderWindow;
 
-    std::vector<SpriteRendererShar> toDraw;
+    std::vector<DrawableShar> toDraw;
     std::vector<RigidbodyShar> physics;
     std::vector<GameObjectShar> objects;
 

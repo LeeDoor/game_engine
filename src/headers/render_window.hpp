@@ -13,7 +13,7 @@ public:
     //clears memory
     void quit();
     //draws given elements
-    void draw(std::vector<SpriteRendererShar>);
+    void draw(std::vector<DrawableShar>);
 
     void present(); // presents all elements drawn
     void clear(); // clears renderer
