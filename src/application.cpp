@@ -14,7 +14,7 @@ void Application::load() {
     dir.buildPlayer(ren);
     GameObjectShar hero = dir.getObject();
     toDraw.push_back(hero->getComponent<SpriteRender>());
-    physics.push_back(hero->getComponent<Physic>());
+    physics.push_back(hero->getComponent<Rigidbody>());
     objects.push_back(hero);
 }
 

@@ -4,7 +4,7 @@ target_sources(srcl PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/application.cpp 
     ${CMAKE_CURRENT_SOURCE_DIR}/render_window.cpp 
     ${CMAKE_CURRENT_SOURCE_DIR}/game_object.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/physic.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/rigidbody.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/sprite_render.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/component.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/go_builder.cpp
@@ -13,7 +13,7 @@ target_sources(srcl PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/headers/go_director.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/headers/component.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/headers/components.hpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/headers/physic.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/headers/rigidbody.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/headers/game_object.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/headers/vector2.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/headers/sprite_render.hpp

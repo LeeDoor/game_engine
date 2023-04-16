@@ -1,30 +1,30 @@
-#include "physic.hpp"
+#include "rigidbody.hpp"
 #include <map>
 #include <algorithm>
 
-float Physic::GRAVITY_FORCE = 1.0f;
-Vector2f Physic::GRAVITY_DIR = Vector2f::Down;
+float Rigidbody::GRAVITY_FORCE = 1.0f;
+Vector2f Rigidbody::GRAVITY_DIR = Vector2f::Down;
 
-float Physic::getForce() { 
+float Rigidbody::getForce() { 
     return force; 
 }
-void Physic::setForce(float force_) { 
+void Rigidbody::setForce(float force_) { 
     force = force_; 
 }
 
-Vector2f Physic::getDir() {
+Vector2f Rigidbody::getDir() {
     return dir;
 }
-void Physic::setDir(Vector2f dir_) {
+void Rigidbody::setDir(Vector2f dir_) {
     dir_.normalize();
     dir = dir_;
 }
 
-Direction Physic::isCollide(Vector2f fPos, Vector2f fSize, Vector2f sPos, Vector2f sSize) {
+Direction Rigidbody::isCollide(Vector2f fPos, Vector2f fSize, Vector2f sPos, Vector2f sSize) {
     return isCollide(SDL_Rect{(int)fPos.x, (int)fPos.y, (int)fSize.x, (int)fSize.y}, 
                      SDL_Rect{(int)sPos.x, (int)sPos.y, (int)sSize.x, (int)sSize.y});
 }
-Direction Physic::isCollide(SDL_Rect first, SDL_Rect second){
+Direction Rigidbody::isCollide(SDL_Rect first, SDL_Rect second){
     std::map<Direction, int> dist;
 
     //counts distance how deep figure is in for each side
@@ -59,17 +59,17 @@ Direction Physic::isCollide(SDL_Rect first, SDL_Rect second){
     return min.first;
 
 }
-bool Physic::init(GameObjectShar go_) {
+bool Rigidbody::init(GameObjectShar go_) {
     return init(go_, Vector2f{ 1, 1 }, Vector2f{1, 1}, 0);
 }
-bool Physic::init(GameObjectShar go_, Vector2f size_, Vector2f dir_, float force_) {
+bool Rigidbody::init(GameObjectShar go_, Vector2f size_, Vector2f dir_, float force_) {
     Component::init(go_);
     size = size_;
     setDir(dir_);
     setForce(force_);
     return true;
 }   
-void Physic::update () {
+void Rigidbody::update () {
     int collision = 4;
     if(collision == 2){
         force = 0;
@@ -81,14 +81,14 @@ void Physic::update () {
     setForce(newPos.len());
     setDir(newPos);
 }
-void Physic::print(){
+void Rigidbody::print(){
     Vector2f pos = go.lock()->getPos();
     std::cout << "collider: " << pos.x << ' ' << pos.y << ' ' << size.x << " " << size.y << "\n"
         << "direction: " << dir.x << " " << dir.y << '\n'
         << "force: " << force << "\n";
 }
 
-void Physic::draw(SDL_Renderer* ren) {
+void Rigidbody::draw(SDL_Renderer* ren) {
     Vector2f pos = go.lock()->getPos();
     SDL_SetRenderDrawColor(ren, 38, 255, 74, 255);
     SDL_RenderDrawRect(ren, new SDL_Rect{(int)pos.x, (int)pos.y, (int)size.x, (int)size.y});

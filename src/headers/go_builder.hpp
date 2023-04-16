@@ -13,7 +13,7 @@ public:
     GameObjectBuilder* reset(Vector2f pos_); // resets value
     // builds Drawable component for value
     GameObjectBuilder* buildDrawable(Vector2f size_, SDL_Renderer *ren_, const char *pathToImage_);
-    // builds Physic component for value
+    // builds Rigidbody component for value
     GameObjectBuilder* buildPhysic(Vector2f size_);
 
     /*

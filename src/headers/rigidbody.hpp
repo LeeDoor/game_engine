@@ -7,7 +7,7 @@
 #include "direction.hpp"
 typedef std::unique_ptr<SDL_Rect> RectPtr;
 
-class Physic : public Component {
+class Rigidbody : public Component {
 private:
 protected:
     Vector2f size; // collider hitbox
@@ -39,5 +39,5 @@ public:
     void draw(SDL_Renderer* ren);
 };
 
-typedef std::shared_ptr<Physic> PhysicShar;
-typedef std::unique_ptr<Physic> PhysicPtr;
+typedef std::shared_ptr<Rigidbody> PhysicShar;
+typedef std::unique_ptr<Rigidbody> PhysicPtr;
