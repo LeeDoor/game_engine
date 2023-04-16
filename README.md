@@ -1,5 +1,5 @@
 # game_engine
-personal project platformer game with unique mechanic. C++ SDL
+personal project game engine with siplest physic. made in C++. graphics with SDL2. build with CMake.
 
 to use this project you need sdl2 and sdl2_image installed! on pacman use this
 ```
