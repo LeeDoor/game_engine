@@ -9,9 +9,9 @@ typedef std::unique_ptr<GameObject> GameObjectPtr;
 //base class component
 //!!!dont forget to init base component class and update virtual function!!!
 class Component {
-protected:
-    GameObjectWeak go;
 public:
+    GameObjectWeak go;
+    
     bool init(GameObjectShar go_);
     virtual void update() = 0;
 };

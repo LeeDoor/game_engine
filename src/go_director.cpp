@@ -18,7 +18,7 @@ GameObjectShar GameObjectDirector::getObject() {
 void GameObjectDirector::buildPlayer(SDL_Renderer *ren_, Vector2f pos_) {
     auto player = builder->reset(pos_)
         ->buildSpriteRenderer(Vector2f{20, 50}, ren_, "res/smile.bmp")
-        ->buildRigidbody(Vector2f::STD[Direction::Up], 5, 5)
+        ->buildRigidbody(Vector2f::STD[Direction::Right], 5, 1)
         ->buildCollider(Vector2f{20, 40})
         ->getValue();
 

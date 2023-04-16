@@ -33,14 +33,24 @@ bool Rigidbody::init(GameObjectShar go_, Vector2f dir_, float force_, float elas
     return true;
 }   
 void Rigidbody::update () {
-    int collision = 4;
-    if(collision == 2){
-        force = 0;
-        dir = Vector2f::STD[Direction::None];
-        return;
-    }
     Vector2f newPos = dir * force + Physics::GRAVITY_DIR * Physics::GRAVITY_FORCE;
     go.lock()->pos += Vector2f(newPos.x, newPos.y);
     setForce(newPos.len());
     setDir(newPos);
+}
+
+void Rigidbody::collisionReact(Direction side, int depth) {
+    Vector2f sideV = Vector2f::STD[side];
+    go.lock()->pos = go.lock()->getPos() + sideV * -depth;
+
+    //for x
+    if(sideV.x != 0) {
+        dir.x = -dir.x;
+    }
+    else {
+        dir.y = -dir.y;
+    }
+    // fixes bouncing at 0.00-0001 force
+    if(force < Physics::MINIMAL_FORCE) force = 0;
+    else force *= elasticity;
 }

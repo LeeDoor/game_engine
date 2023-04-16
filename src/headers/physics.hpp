@@ -8,6 +8,7 @@ class Physics {
 public:
     static float GRAVITY_FORCE;
     static Vector2f GRAVITY_DIR;
+    static float MINIMAL_FORCE;
 
     //returns direction where first collider collides second one
     static std::pair<Direction, int> isCollide(Vector2f fPos, Vector2f fSize, Vector2f sPos, Vector2f sSize);

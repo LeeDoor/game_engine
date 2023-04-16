@@ -28,6 +28,7 @@ public:
     /////////
     bool init(GameObjectShar go_, Vector2f dir_ = Vector2f::STD[Direction::Up], float force_ = 0, float elasticity_ = 0.5f);
     void update () override;
+    void collisionReact(Direction dir, int depth);
 };
 
 typedef std::shared_ptr<Rigidbody> RigidbodyShar;

@@ -4,6 +4,7 @@
 #include <iostream>
 
 float Physics::GRAVITY_FORCE = 0.5f;
+float Physics::MINIMAL_FORCE = 1.0f;
 Vector2f Physics::GRAVITY_DIR = Vector2f::STD[Direction::Down];
 
 std::pair<Direction, int> Physics::isCollide(Vector2f fPos, Vector2f fSize, Vector2f sPos, Vector2f sSize) {

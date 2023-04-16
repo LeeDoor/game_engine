@@ -29,8 +29,10 @@ void Application::collide() {
         for(auto it2 = it1 + 1; it2 != colliders.end(); ++it2) {
         auto pair = Physics::isCollide((*it1)->getRect(), (*it2)->getRect()); 
             if(pair.first != Direction::None) {
-                (*it1)->collideFrom(pair.first, pair.second);
-                (*it2)->collideFrom(INV_DIR(pair.first), pair.second);
+                auto r1 = (*it1)->go.lock()->getComponent<Rigidbody>();
+                if(r1 != nullptr_t()) r1->collisionReact(pair.first, pair.second);
+                auto r2 = (*it2)->go.lock()->getComponent<Rigidbody>();
+                if(r2 != nullptr_t()) r2->collisionReact(INV_DIR(pair.first), pair.second);
             }
         }
     }
