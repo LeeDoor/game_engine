@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 3.13)
 
 target_sources(srcl PRIVATE 
-    ${CMAKE_CURRENT_SOURCE_DIR}/window.cpp 
+    ${CMAKE_CURRENT_SOURCE_DIR}/application.cpp 
     ${CMAKE_CURRENT_SOURCE_DIR}/render_window.cpp 
     ${CMAKE_CURRENT_SOURCE_DIR}/game_object.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/physic.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/drawable.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/sprite_render.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/component.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/go_builder.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/go_director.cpp
@@ -16,10 +16,10 @@ target_sources(srcl PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/headers/physic.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/headers/game_object.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/headers/vector2.hpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/headers/drawable.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/headers/sprite_render.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/headers/direction.hpp
     ${CMAKE_CURRENT_SOURCE_DIR}/headers/render_window.hpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/headers/window.hpp)
+    ${CMAKE_CURRENT_SOURCE_DIR}/headers/application.hpp)
 
 target_include_directories(srcl PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/headers)
 

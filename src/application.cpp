@@ -1,24 +1,24 @@
-#include "window.hpp"
+#include "application.hpp"
 #include <ctime>
 
-void Window::init() {
+void Application::init() {
     renderWindow = std::make_shared<RenderWindow>();
     renderWindow->init("time shifter", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 0);
     load();
     update();
 }
 
-void Window::load() {
+void Application::load() {
     SDL_Renderer* ren = renderWindow->getRenderer();
     GameObjectDirector dir;
     dir.buildPlayer(ren);
     GameObjectShar hero = dir.getObject();
-    toDraw.push_back(hero->getComponent<Drawable>());
+    toDraw.push_back(hero->getComponent<SpriteRender>());
     physics.push_back(hero->getComponent<Physic>());
     objects.push_back(hero);
 }
 
-void Window::update() {
+void Application::update() {
     srand(time(0));
     gameRunning = true; // true if game loop is going
     bool physicDraw = true; // draw physic colliders

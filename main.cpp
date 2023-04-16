@@ -1,7 +1,7 @@
-#include "window.hpp"
+#include "application.hpp"
 
 int main(int argc, char ** argv)
 {
-    Window w;
+    Application w;
     w.init();
 }

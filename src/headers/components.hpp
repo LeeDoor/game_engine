@@ -1,3 +1,3 @@
 #include "component.hpp"
-#include "drawable.hpp"
+#include "sprite_render.hpp"
 #include "physic.hpp"

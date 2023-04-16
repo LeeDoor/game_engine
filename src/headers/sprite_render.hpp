@@ -5,7 +5,7 @@
 #include "vector2.hpp"
 
 //abstract class for each object which can be drawn
-class Drawable : public Component {
+class SpriteRender : public Component {
 protected:
     SDL_Texture* text; // texture object of this class
     const char* pathToImage; // path to texture image
@@ -17,5 +17,5 @@ public:
     void update() override {}
 };
 
-typedef std::unique_ptr<Drawable> DrawablePtr;
-typedef std::shared_ptr<Drawable> DrawableShar;
+typedef std::unique_ptr<SpriteRender> DrawablePtr;
+typedef std::shared_ptr<SpriteRender> DrawableShar;

@@ -5,7 +5,7 @@
 #include "go_director.hpp"
 #include "render_window.hpp"
 
-class Window {
+class Application {
 public:
     //initialize function. creates window and renderer
     void init();

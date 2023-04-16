@@ -11,7 +11,7 @@ GameObjectBuilder* GameObjectBuilder::reset(Vector2f pos_) {
     return this;
 }
 GameObjectBuilder* GameObjectBuilder::buildDrawable(Vector2f size_, SDL_Renderer *ren_, const char *pathToImage_) {
-    value->addComponent<Drawable>().first 
+    value->addComponent<SpriteRender>().first 
             ->init(value, size_, ren_, pathToImage_);
     return this;
 }
