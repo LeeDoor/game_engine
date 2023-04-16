@@ -1,4 +1,4 @@
-# time-shifter
+# game_engine
 personal project platformer game with unique mechanic. C++ SDL
 
 to use this project you need sdl2 and sdl2_image installed! on pacman use this
