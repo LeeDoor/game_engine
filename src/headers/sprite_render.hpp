@@ -17,5 +17,5 @@ public:
     void update() override {}
 };
 
-typedef std::unique_ptr<SpriteRender> DrawablePtr;
-typedef std::shared_ptr<SpriteRender> DrawableShar;
+typedef std::unique_ptr<SpriteRender> SpriteRendererPtr;
+typedef std::shared_ptr<SpriteRender> SpriteRendererShar;

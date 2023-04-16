@@ -16,8 +16,8 @@ private:
 
     RenderWindowShar renderWindow;
 
-    std::vector<DrawableShar> toDraw;
-    std::vector<PhysicShar> physics;
+    std::vector<SpriteRendererShar> toDraw;
+    std::vector<RigidbodyShar> physics;
     std::vector<GameObjectShar> objects;
 
     const int MAX_FPS = 20; // max fps

@@ -14,8 +14,8 @@ void RenderWindow::quit() {
     SDL_DestroyWindow(win);
 }
 
-void RenderWindow::draw(std::vector<DrawableShar> vec) {
-    for(DrawableShar el : vec) {
+void RenderWindow::draw(std::vector<SpriteRendererShar> vec) {
+    for(SpriteRendererShar el : vec) {
         el->draw(ren);
     }
 }

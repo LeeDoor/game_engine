@@ -39,5 +39,5 @@ public:
     void draw(SDL_Renderer* ren);
 };
 
-typedef std::shared_ptr<Rigidbody> PhysicShar;
-typedef std::unique_ptr<Rigidbody> PhysicPtr;
+typedef std::shared_ptr<Rigidbody> RigidbodyShar;
+typedef std::unique_ptr<Rigidbody> RigidbodyPtr;

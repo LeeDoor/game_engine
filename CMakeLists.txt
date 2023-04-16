@@ -11,11 +11,13 @@ target_link_libraries(platformer PUBLIC srcl)
 
 
 #TESTS 
-
-add_executable(VectorTest test/vector_test.cpp)
-add_executable(CollisionTest test/collision_test.cpp)
-target_link_libraries(VectorTest PRIVATE srcl)
-target_link_libraries(CollisionTest PRIVATE srcl)
-enable_testing()
-add_test(NAME Vector COMMAND VectorTest)
-add_test(NAME Collision COMMAND CollisionTest)
+set(testing true)
+if(testing)
+    add_executable(VectorTest test/vector_test.cpp)
+    add_executable(CollisionTest test/collision_test.cpp)
+    target_link_libraries(VectorTest PRIVATE srcl)
+    target_link_libraries(CollisionTest PRIVATE srcl)
+    enable_testing()
+    add_test(NAME Vector COMMAND VectorTest)
+    add_test(NAME Collision COMMAND CollisionTest)
+endif()
