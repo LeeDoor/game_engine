@@ -24,9 +24,14 @@ void Collider::collideFrom(Direction side, int depth) {
     if(sideV.x != 0) {
         startD.x = -startD.x;
     }
-    else if(sideV.y != 0) {
+    else {
         startD.y = -startD.y;
     }
+    // fixes bouncing at 0.00-0001 force
+    if(rigid->getForce() < 1.0f)
+        rigid->setForce(0);
+    else
+        rigid->setForce(rigid->getForce() * rigid->getElasticity());
     rigid->setDir(startD);
 }
 SDL_Rect* Collider::getRect() {

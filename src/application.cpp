@@ -15,33 +15,11 @@ void Application::init() {
 void Application::load() {
     SDL_Renderer* ren = renderWindow->getRenderer();
     GameObjectDirector dir;
+    dir.init(&toDraw, &objects, &colliders);
     dir.buildPlayer(ren, Vector2f{500, 500});
-    GameObjectShar hero = dir.getObject();
-    toDraw.push_back(hero->getComponent<SpriteRender>());
-    colliders.push_back(hero->getComponent<Collider>());
-    objects.push_back(hero);
-
     dir.buildWall(ren, Vector2f{100, 800}, Vector2f {800, 100});
-    GameObjectShar wall = dir.getObject();
-    colliders.push_back(wall->getComponent<Collider>());
-    objects.push_back(wall);
-    toDraw.push_back(wall->getComponent<Collider>());
-
     dir.buildWall(ren, Vector2f{100, 100}, Vector2f {100, 800});
-    wall = dir.getObject();
-    colliders.push_back(wall->getComponent<Collider>());
-    objects.push_back(wall);
-    toDraw.push_back(wall->getComponent<Collider>());
-
     dir.buildWall(ren, Vector2f{800, 100}, Vector2f {100, 800});
-    wall = dir.getObject();
-    colliders.push_back(wall->getComponent<Collider>());
-    objects.push_back(wall);
-
-#ifdef COLLIDER_DRAW
-    toDraw.push_back(hero->getComponent<Collider>());
-    toDraw.push_back(wall->getComponent<Collider>());
-#endif
 
 
 }

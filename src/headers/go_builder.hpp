@@ -14,7 +14,7 @@ public:
     // builds SpriteRenderer component for value
     GameObjectBuilder* buildSpriteRenderer(Vector2f size_, SDL_Renderer *ren_, const char *pathToImage_);
     // builds Rigidbody component for value
-    GameObjectBuilder* buildRigidbody();
+    GameObjectBuilder* buildRigidbody(Vector2f dir_ = Vector2f::STD[Direction::Up], float force_ = 0, float elasticity_ = 1);
     // builds Collider component
     GameObjectBuilder* buildCollider(Vector2f size_);
 

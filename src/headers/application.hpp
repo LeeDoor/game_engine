@@ -20,7 +20,7 @@ private:
     std::vector<GameObjectShar> objects;
     std::vector<ColliderShar> colliders;
 
-    const int MAX_FPS = 20; // max fps
+    const int MAX_FPS = 60; // max fps
     const double FRAME_TIME = 1000/(double)MAX_FPS; // time between frame changings
 
     bool gameRunning = false; // is game running variable

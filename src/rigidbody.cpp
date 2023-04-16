@@ -16,14 +16,20 @@ void Rigidbody::setDir(Vector2f dir_) {
     dir = dir_;
 }
 
-
-bool Rigidbody::init(GameObjectShar go_) {
-    return init(go_, Vector2f{1, 1}, 0);
+float Rigidbody::getElasticity() {
+    return elasticity;
 }
-bool Rigidbody::init(GameObjectShar go_, Vector2f dir_, float force_) {
+
+void Rigidbody::setElasticity(float el_) {
+    elasticity = std::abs(el_);
+}
+
+
+bool Rigidbody::init(GameObjectShar go_, Vector2f dir_, float force_, float elasticity_) {
     Component::init(go_);
     setDir(dir_);
     setForce(force_);
+    setElasticity(elasticity_);
     return true;
 }   
 void Rigidbody::update () {

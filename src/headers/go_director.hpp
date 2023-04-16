@@ -5,9 +5,13 @@
 class GameObjectDirector {
 private:
     GameObjectBuilderPtr builder; // given builder
-
+    std::vector<DrawableShar>* toDraw;
+    std::vector<GameObjectShar>* objects;
+    std::vector<ColliderShar>* colliders;
 public:
-    GameObjectDirector();
+    void init(  std::vector<DrawableShar>* toDraw,
+                std::vector<GameObjectShar>* objects,
+                std::vector<ColliderShar>* colliders);
 
     GameObjectShar getObject(); // returns builded object from builder
     void buildPlayer(SDL_Renderer *ren_, Vector2f pos_); // builds player object

@@ -12,7 +12,9 @@ private:
 protected:
     Vector2f dir; // direction of force
     float force; // force value
-    
+    float elasticity; // value where 0 never bounces and 1 bounces with losing minimal force. cannot be less than 0
+
+    void setElasticity(float el_);
 public:
     /// access methods 
     float getForce();
@@ -21,9 +23,10 @@ public:
     Vector2f getDir();
     void setDir(Vector2f dir_);
 
+    float getElasticity();
+
     /////////
-    bool init(GameObjectShar go_);
-    bool init(GameObjectShar go_, Vector2f dir_, float force_);
+    bool init(GameObjectShar go_, Vector2f dir_ = Vector2f::STD[Direction::Up], float force_ = 0, float elasticity_ = 0.5f);
     void update () override;
 };
 
